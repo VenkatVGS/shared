@@ -9,9 +9,6 @@ def call() {
                     }
                 }
             }
-            tools {
-        maven 'maven3' 
-    }
       stage ('Build') {
         steps {
           script{
