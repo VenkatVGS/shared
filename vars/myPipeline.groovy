@@ -41,7 +41,9 @@ def call() {
                 steps {
                     script {
                         sh 'docker build -t naresh2603/multi:v1 .'
+                        sh 'docker rmi naresh2603/multi:v1'
                         sh 'docker images'
+                        sh 'docker rmi naresh2603/multi:v1'
                         sh 'docker ps'
                     }
                 }
