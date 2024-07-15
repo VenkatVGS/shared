@@ -1,35 +1,32 @@
 def call() {
     pipeline {
         agent any
-        tools {
-        maven 'maven3' 
-    }
         stages {
             stage('Git Checkout') {
                 steps {
                     script {
-                        git branch: 'main', url: 'https://github.com/VenkatVGS/multi-branch.git' //project-repo
+                        git branch: 'node-dev', url: 'https://github.com/VenkatVGS/multi-branch.git' //project-repo
                     }
                 }
             }
-      stage ('Build') {
-        steps {
-          script{
-            def mvnHome = tool name: 'maven3', type: 'maven'
-            sh "${mvnHome}/bin/mvn clean package"
-              sh 'mv target/onlinebookstore*.war target/mybook.war'
-              // sh "mvn clean package"
-              // sh "mv target/*.war target/mybook.war"
-          }
-        }
-      }
-            // stage ('Build') {
-            //     steps {
-            //         script {
-            //             sh 'npm install'
-            //         }
-            //     }
-            // }
+      // stage ('Build') {
+      //   steps {
+      //     script{
+      //       def mvnHome = tool name: 'maven3', type: 'maven'
+      //       sh "${mvnHome}/bin/mvn clean package"
+      //         sh 'mv target/onlinebookstore*.war target/mybook.war'
+      //         // sh "mvn clean package"
+      //         // sh "mv target/*.war target/mybook.war"
+      //     }
+      //   }
+      // }
+            stage ('Build') {
+                steps {
+                    script {
+                        sh 'npm install'
+                    }
+                }
+            }
             // stage ('SonarQube Analysis') {
             //     steps {
             //         script { 
